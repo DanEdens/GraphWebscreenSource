@@ -1,0 +1,93 @@
+<!-- I know my code is very DRY.... but hey.... it works! -->
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <script src="autotoolsfunctions.js"></script>
+  <link rel="stylesheet" type="text/css" href="autotoolsstyle.css" />
+  <link rel="stylesheet" type="text/css" href="allinonestyles.css" />
+  <script src="loader.js"></script>
+
+  <meta name="autotoolswebscreen" type="variablejs" id="titleText1" group="Graph1" label="Graph Title" defaultValue="Graph 1"/>
+  <meta name="autotoolswebscreen" type="variablejs" id="titleSize1" group="Graph1" label="Title Size" defaultValue="20"/>
+  <meta name="autotoolswebscreen" type="variablejs" id="titleColor1" group="Graph1" label="Title Color" isColor="true" defaultValue="#78C0E0"/>
+  <meta name="autotoolswebscreen" type="variablejs" id="titlePos1" group="Graph1" label="Title Position" options="in,out,none" defaultValue="out"/>
+  <meta name="autotoolswebscreen" type="variablejs" id="curvedGraph1" group="Graph1" label="Curved or Line?" options="function,line" defaultValue="line"/>
+  <meta name="autotoolswebscreen" type="variablejs" id="animationChoice1" group="Graph1" label="Animation?" subtype="boolean" defaultValue="true"/>
+  <meta name="autotoolswebscreen" type="variablejs" id="bgColor1" group="Graph1" label="Background Color" isColor="true" defaultValue="#0A2239"/>
+  <meta name="autotoolswebscreen" type="variablejs" id="maxLineColor1" group="Graph1" label="Max Line Color" isColor="true" defaultValue="#BFEDEF"/>
+  <meta name="autotoolswebscreen" type="variablejs" id="minLineColor1" group="Graph1" label="Min Line Color" isColor="true" defaultValue="#85FFC7"/>
+  <meta name="autotoolswebscreen" type="variablejs" id="xLabels1" group="Graph1" label="X Axis Labels Array" hint="Use comma separated list or tasker array." />
+  <meta name="autotoolswebscreen" type="variablejs" id="yMaxLabels1" group="Graph1" label="yMax Array" hint="Use comma separated list or tasker array." />
+  <meta name="autotoolswebscreen" type="variablejs" id="yMinLabels1" group="Graph1" label="yMin Array" hint="Use comma separated list or tasker array.  Leave this blank if you want only one line." defaultValue="78,60,81,75,60,52" />
+  <meta name="autotoolswebscreen" type="variablejs" id="axesTitles1" group="Graph1" label="Axes Titles Position" options="in,out,none" defaultValue="out"/>
+  <meta name="autotoolswebscreen" type="variablejs" id="xAxisTitle1" group="Graph1" label="Title of x-axis?" defaultValue="Date" />
+  <meta name="autotoolswebscreen" type="variablejs" id="yAxisTitle1" group="Graph1" label="Title of y-axis?" defaultValue="Temp" />
+  <meta name="autotoolswebscreen" type="variablejs" id="axesColor1" group="Graph1" label="Axes Color" isColor="true" defaultValue="#7a78e2" />
+  <meta name="autotoolswebscreen" type="variablejs" id="numOfLinesY1" group="Graph1" label="Number of Y-Gridlines" defaultValue="11"/>
+  <meta name="autotoolswebscreen" type="variablejs" id="lineThickness1" group="Graph1" label="Thickness of Lines" defaultValue="3"/>
+  <meta name="autotoolswebscreen" type="variablejs" id="yMax1" group="Graph1" label="Maximum y?" hint="Leave blank to auto adjust."/>
+  <meta name="autotoolswebscreen" type="variablejs" id="yMin1" group="Graph1" label="Minimum y?" hint="Leave blank to auto adjust."/>
+
+  <meta name="autotoolswebscreen" type="variablejs" id="titleText2" group="Graph2" label="Graph Title" defaultValue="Graph 2"/>
+  <meta name="autotoolswebscreen" type="variablejs" id="titleSize2" group="Graph2" label="Title Size" defaultValue="25"/>
+  <meta name="autotoolswebscreen" type="variablejs" id="titleColor2" group="Graph2" label="Title Color" isColor="true" defaultValue="#090809"/>
+  <meta name="autotoolswebscreen" type="variablejs" id="titlePos2" group="Graph2" label="Title Position" options="in,out,none" defaultValue="in"/>
+  <meta name="autotoolswebscreen" type="variablejs" id="curvedGraph2" group="Graph2" label="Curved or Line?" options="function,line" defaultValue="function"/>
+  <meta name="autotoolswebscreen" type="variablejs" id="animationChoice2" group="Graph2" label="Animation?" subtype="boolean" defaultValue="false"/>
+  <meta name="autotoolswebscreen" type="variablejs" id="bgColor2" group="Graph2" label="Background Color" isColor="true" defaultValue="#F7EF99"/>
+  <meta name="autotoolswebscreen" type="variablejs" id="maxLineColor2" group="Graph2" label="Max Line Color" isColor="true" defaultValue="#0E34A0"/>
+  <meta name="autotoolswebscreen" type="variablejs" id="minLineColor2" group="Graph2" label="Min Line Color" isColor="true" defaultValue="#78C0E0"/>
+  <meta name="autotoolswebscreen" type="variablejs" id="xLabels2" group="Graph2" label="X Axis Labels Array" hint="Use comma separated list or tasker array." />
+  <meta name="autotoolswebscreen" type="variablejs" id="yMaxLabels2" group="Graph2" label="yMax Array" hint="Use comma separated list or tasker array." />
+  <meta name="autotoolswebscreen" type="variablejs" id="yMinLabels2" group="Graph2" label="yMin Array" hint="Use comma separated list or tasker array.  Leave this blank if you want only one line." defaultValue=""/>
+  <meta name="autotoolswebscreen" type="variablejs" id="axesTitles2" group="Graph2" label="Axes Titles Position" options="in,out,none" defaultValue="in"/>
+  <meta name="autotoolswebscreen" type="variablejs" id="xAxisTitle2" group="Graph2" label="Title of x-axis?" defaultValue="dependent" />
+  <meta name="autotoolswebscreen" type="variablejs" id="yAxisTitle2" group="Graph2" label="Title of y-axis?" defaultValue="independent" />
+  <meta name="autotoolswebscreen" type="variablejs" id="axesColor2" group="Graph2" label="Axes Color" isColor="true" defaultValue="#E70E02" />
+  <meta name="autotoolswebscreen" type="variablejs" id="numOfLinesY2" group="Graph2" label="Number of Y-Gridlines" defaultValue="4"/>
+  <meta name="autotoolswebscreen" type="variablejs" id="lineThickness2" group="Graph2" label="Thickness of Lines" defaultValue="5"/>
+  <meta name="autotoolswebscreen" type="variablejs" id="yMax2" group="Graph2" label="Maximum y?" hint="Leave blank to auto adjust."/>
+  <meta name="autotoolswebscreen" type="variablejs" id="yMin2" group="Graph2" label="Minimum y?" hint="Leave blank to auto adjust."/>
+
+
+  <meta name="autotoolswebscreen" type="variablejs" id="titleText3" group="Graph3" label="Graph Title" defaultValue="Graph 3"/>
+  <meta name="autotoolswebscreen" type="variablejs" id="titleSize3" group="Graph3" label="Title Size" defaultValue="15"/>
+  <meta name="autotoolswebscreen" type="variablejs" id="titleColor3" group="Graph3" label="Title Color" isColor="true" defaultValue="#ffffff"/>
+  <meta name="autotoolswebscreen" type="variablejs" id="titlePos3" group="Graph3" label="Title Position" options="in,out,none" defaultValue="none"/>
+  <meta name="autotoolswebscreen" type="variablejs" id="curvedGraph3" group="Graph3" label="Curved or Line?" options="function,line" defaultValue="function"/>
+  <meta name="autotoolswebscreen" type="variablejs" id="animationChoice3" group="Graph3" label="Animation?" subtype="boolean" defaultValue="true"/>
+  <meta name="autotoolswebscreen" type="variablejs" id="bgColor3" group="Graph3" label="Background Color" isColor="true" defaultValue="#F5F5F5"/>
+  <meta name="autotoolswebscreen" type="variablejs" id="maxLineColor3" group="Graph3" label="Max Line Color" isColor="true" defaultValue="#a50097"/>
+  <meta name="autotoolswebscreen" type="variablejs" id="minLineColor3" group="Graph3" label="Min Line Color" isColor="true" defaultValue="#993000"/>
+  <meta name="autotoolswebscreen" type="variablejs" id="xLabels3" group="Graph3" label="X Axis Labels Array" hint="Use comma separated list or tasker array." />
+  <meta name="autotoolswebscreen" type="variablejs" id="yMaxLabels3" group="Graph3" label="yMax Array" hint="Use comma separated list or tasker array." />
+  <meta name="autotoolswebscreen" type="variablejs" id="yMinLabels3" group="Graph3" label="yMin Array" hint="Use comma separated list or tasker array.  Leave this blank if you want only one line." defaultValue="-50,-20,40,-5,-30,-45" />
+  <meta name="autotoolswebscreen" type="variablejs" id="axesTitles3" group="Graph3" label="Axes Titles Position" options="in,out,none" defaultValue="out"/>
+  <meta name="autotoolswebscreen" type="variablejs" id="xAxisTitle3" group="Graph3" label="Title of x-axis?" defaultValue="stuff" />
+  <meta name="autotoolswebscreen" type="variablejs" id="yAxisTitle3" group="Graph3" label="Title of y-axis?" defaultValue="numbers" />
+  <meta name="autotoolswebscreen" type="variablejs" id="axesColor3" group="Graph3" label="Axes Color" isColor="true" defaultValue="#939393" />
+  <meta name="autotoolswebscreen" type="variablejs" id="numOfLinesY3" group="Graph3" label="Number of Y-Gridlines" defaultValue="8"/>
+  <meta name="autotoolswebscreen" type="variablejs" id="lineThickness3" group="Graph3" label="Thickness of Lines" defaultValue="4"/>
+  <meta name="autotoolswebscreen" type="variablejs" id="yMax3" group="Graph3" label="Maximum y?" hint="Leave blank to auto adjust."/>
+  <meta name="autotoolswebscreen" type="variablejs" id="yMin3" group="Graph3" label="Minimum y?" hint="Leave blank to auto adjust."/>
+
+
+  <meta name="autotoolswebscreen" type="variablejs" id="gapSize" label="Gap between charts?" hint="Enter a number." defaultValue="25"/>
+  <meta name="autotoolswebscreen" type="variablejs" id="numCharts" label="Number of Charts?" options="1,2,3" defaultValue="3"/>
+  <meta name="autotoolswebscreen" type="variablejs" id="fontFam" label="Font?" options="arial,times,courier" defaultValue="arial"/>
+
+  <title>All In One</title>
+</head>
+<body>
+  <div id="stuff">
+      <div id="chart1" class="charts"></div>
+      <div id="chart2" class="charts"></div>
+      <div id="chart3" class="charts"></div>
+  </div>
+
+</body>
+<script src="extraallinone.js"></script>
+</html>

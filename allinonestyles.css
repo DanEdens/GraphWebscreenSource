@@ -1,0 +1,17 @@
+/* This sets up everything to display correctly. */
+
+* {
+  margin: 0;
+}
+
+#stuff {
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  min-height: 100vh;
+}
+
+.charts {
+  width: 100vw;
+  height: 50vw;
+}
